@@ -24,7 +24,7 @@ class BrandSlider extends Template implements BlockInterface
 
     public function getBrandsCollection()
     {
-        $post = $this->_brandsFactory->create();
-        return $post->getCollection();
+        $_brands = $this->_brandsFactory->create();
+        return $_brands->getCollection();
     }
 }
