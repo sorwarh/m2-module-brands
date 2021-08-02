@@ -1,0 +1,49 @@
+<?php
+
+$_brands = $block->getBrandsCollection();
+
+?>
+<?php if (isset($_brands)) : ?>
+    <div class="brands--carousel owl-carousel owl-loaded clearfix">
+
+        <?php foreach ($_brands as $_brand) : ?>
+            <?php if ($_brand["status"] == 1) : ?>
+                <div class="item">
+                    <div class="image">
+                        <img src="" alt="">
+                    </div>
+                    <h4><?= $_brand["title"] ?></h4>
+                    <p><strong><?= $_brand["category"] ?></strong></p>
+                    <p class="description"><?= $_brand["description"] ?></p>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+
+    <script>
+        require(['jquery', 'owal'], function($) {
+            jQuery('.brands--carousel').owlCarousel({
+                loop: false,
+                margin: 30,
+                nav: true,
+                navText: ["<img src='<?= $block->escapeUrl($block->getViewFileUrl('Sorwar_Brands::images/left-arrow.png')) ?>'>", "<img src='<?= $block->escapeUrl($block->getViewFileUrl('Sorwar_Brands::images/right-arrow.png')) ?>'>"],
+                autoplay: false,
+                responsive: {
+                    320: {
+                        items: 1,
+                        nav: false
+                    },
+                    599: {
+                        items: 2
+                    },
+                    991: {
+                        items: 3
+                    },
+                    1280: {
+                        items: 3
+                    }
+                }
+            });
+        });
+    </script>
+<?php endif; ?>
