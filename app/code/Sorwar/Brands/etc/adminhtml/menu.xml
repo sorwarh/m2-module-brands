@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Sorwar_Brands::brands" title="Logo Maganer" translate="title" module="Sorwar_Brands" sortOrder="1" parent="Magento_Backend::content" resource="Sorwar_Brands::brands" />
+        <add id="Sorwar_Brands::manage_logos" title="Manage Logos" translate="title" module="Sorwar_Brands" action="brands" sortOrder="10" parent="Sorwar_Brands::brands" resource="Sorwar_Brands::brands" />
+    </menu>
+</config>
