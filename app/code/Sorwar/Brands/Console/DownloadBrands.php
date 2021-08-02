@@ -29,7 +29,17 @@ class DownloadBrands extends Command
 
         $_brands = $this->_brandsFactory->create();
         $_brands =  $_brands->getCollection();
-        $output->writeln("Export done");
-        $output->writeln($_brands);
+        // Open/Create the file
+        $fname = "brands-copy-" . date("Y-m-d__h:i:s") . ".csv";
+        $f = fopen($fname, 'a');
+        fputcsv($f, ["title", "category", "description", "created_at"]);
+
+        foreach ($_brands as $_brand) {
+            fputcsv($f, [$_brand["title"], $_brand["category"], $_brand["description"], $_brand["category"], $_brand["created_at"]]);
+        }
+
+        // Close the file
+        fclose($f);
+        $output->writeln("Export done file name: " . $fname);
     }
 }
